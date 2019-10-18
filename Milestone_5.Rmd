@@ -1,9 +1,9 @@
 ---
-title: "Milestone 5: "
+title: "Milestone 5: Final Project About Page and Cleaned Data"
+author: Liz Masten
+date: 10/18/2019
 output: html_document
 ---
-# Liz Masten
-# 10/18/2019
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning= FALSE, error= FALSE, message= FALSE)
@@ -25,7 +25,7 @@ options(stringsAsFactors = FALSE)
 
 ```{r, echo = FALSE}
 
-# Since the idp data start on 6/24/2019 and returnees data start on 7/1/2019, I dcided to start on 7/1/2019. I filtered the idp and conflict data accordingly. 
+# Since the idp data start on 6/24/2019 and returnees data start on 7/1/2019, I dcided to start on 7/1/2019. I filtered the idp, returnee, and conflict data accordingly. 
 
 
 conflict_dated <- conflict %>% 
@@ -53,23 +53,20 @@ returnees_dated <- returnees %>%
 
 # The Data 
 
+### 1) The International Organization for Migration’s Displacement Tracking Matrix (IOM DTM) collects data on displacement and mobility. As of October 2019, they have tracked 28,542,792 displaced people. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work <a href="https://www.globaldtm.info/">here</a>. 
 
 
-### 1) The International Organization for Migration’s Displacement Tracking Matrix (IOM DTM) collects data on displacement and mobility. As of October 2019, they have tracked 28,542,792 displaced people. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work here. 
-
-
-
-### 2) The Armed Conflict Location & Event Data (ACLED) Project is a “disaggregated data collection, analysis and crisis mapping project” that has collected an incredibly detailed account of political violence and protest events. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work here. 
+### 2) The Armed Conflict Location & Event Data (ACLED) Project is a “disaggregated data collection, analysis and crisis mapping project” that has collected an incredibly detailed account of political violence and protest events. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work <a href="https://www.acleddata.com/about-acled/">here</a>. 
 
 
 # Connect 
 
-### You can contact me at lizmasten@g.harvard.edu or connect with my on LinkedIn. 
+### You can contact me at lizmasten@g.harvard.edu or connect with my on <a href="www.linkedin.com/in/elizabeth-masten-642567196">LinkedIn</a>. 
  
 
 # Technical
 
-### The source code for this site can be found at my GitHub. 
+### The source code for this site can be found at my <a href="https://github.com/LizMas/Milestone_5">GitHub</a>. 
 
 
 
