@@ -3,6 +3,7 @@ title: "Milestone 5: "
 output: html_document
 ---
 # Liz Masten
+# 10/18/2019
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning= FALSE, error= FALSE, message= FALSE)
@@ -11,10 +12,65 @@ knitr::opts_chunk$set(echo = FALSE, warning= FALSE, error= FALSE, message= FALSE
 
 library(readr)
 library(readxl)
+library(lubridate)
 library(tidyverse)
 
 conflict <- read_csv("1900-01-01-2019-10-17-Yemen.csv")
-idp <- read_xlsx("idp.xlsx")
-returnees <- read_xlsx("returnees.xlsx")
+idp <- read_xlsx("idp.xlsx", skip = 1)
+returnees <- read_xlsx("returnees.xlsx", skip = 1)
+
+options(stringsAsFactors = FALSE)
 
 ```
+
+```{r, echo = FALSE}
+
+# Since the idp data start on 6/24/2019 and returnees data start on 7/1/2019, I dcided to start on 7/1/2019. I filtered the idp and conflict data accordingly. 
+
+
+conflict_dated <- conflict %>% 
+      select("event_date", "event_type", "sub_event_type", "actor1", "admin2", "location", "latitude", "longitude", "fatalities") %>% 
+      filter(event_date >= as.Date("2019-07-01"))
+
+idp_dated <- idp %>% 
+      select("District", "Sub-Area", "Total_#_of_HH", "Present_Location", "District_of_Origin", "Displacement_Date", "Return_reason", "Event_Description") %>% 
+      filter(Displacement_Date >= as.Date("2019-07-01"))
+
+  
+  
+returnees_dated <- returnees %>% 
+      select("District", "Sub-Area", "Total_#_of_HH", "Present_Location", "District_of_Origin", "Return_Date", "Displacement/Return_reason", "Event_Description") %>%  
+      filter(Return_Date >= as.Date("2019-07-01"))
+
+
+      
+```
+
+# About 
+
+### This site is designed to explore how conflict in Yemen shaped displacement flows from July to October 2019. 
+
+
+# The Data 
+
+
+
+### 1) The International Organization for Migration’s Displacement Tracking Matrix (IOM DTM) collects data on displacement and mobility. As of October 2019, they have tracked 28,542,792 displaced people. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work here. 
+
+
+
+### 2) The Armed Conflict Location & Event Data (ACLED) Project is a “disaggregated data collection, analysis and crisis mapping project” that has collected an incredibly detailed account of political violence and protest events. This site uses data from their collection on Yemen between 1 July 2019 and 8 October 2019. Please check out their work here. 
+
+
+# Connect 
+
+### You can contact me at lizmasten@g.harvard.edu or connect with my on LinkedIn. 
+ 
+
+# Technical
+
+### The source code for this site can be found at my GitHub. 
+
+
+
+
