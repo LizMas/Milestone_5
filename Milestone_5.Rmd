@@ -8,8 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning= FALSE, error= FALSE, message= FALSE)
 
-# Final Project Milestone 5 due Friday, October 18. Create an Rmd/html which provides a draft of your About page. All of your data processing should be complete. Remember: You must gather data from two or more different sources. Learning how to source, clean and combine data is one of the goals of the project.  
-
 library(readr)
 library(readxl)
 library(lubridate)
@@ -35,8 +33,6 @@ conflict_dated <- conflict %>%
 idp_dated <- idp %>% 
       select("District", "Sub-Area", "Total_#_of_HH", "Present_Location", "District_of_Origin", "Displacement_Date", "Return_reason", "Event_Description") %>% 
       filter(Displacement_Date >= as.Date("2019-07-01"))
-
-  
   
 returnees_dated <- returnees %>% 
       select("District", "Sub-Area", "Total_#_of_HH", "Present_Location", "District_of_Origin", "Return_Date", "Displacement/Return_reason", "Event_Description") %>%  
@@ -45,6 +41,47 @@ returnees_dated <- returnees %>%
 
       
 ```
+```{r, plots}
+
+#Exploratory data visualization: 
+
+#These three plots are for metrics of conflict ONLY. 
+
+#Plot of attacks (sub_event_type) that yielded at least 1 fatality for specified time period. 
+
+event_type <- conflict_dated %>% 
+  select(sub_event_type, fatalities) %>%  
+  filter(fatalities >= 1)
+
+ggplot(event_type, aes(x = sub_event_type, y = fatalities)) +
+  geom_col() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+#table of groups of actors (there are 52)
+
+actor_grouped <- conflict_dated %>% 
+  select(sub_event_type, actor1) %>% 
+  group_by(actor1) %>% 
+  summarise() 
+
+#table of grouped sub event types 
+
+event_grouped <- conflict_dated %>% 
+  select(sub_event_type) %>% 
+  group_by(sub_event_type) %>% 
+  summarise()
+
+# plot of attack types vs day 
+
+day <- conflict_dated %>% 
+  select(event_date, fatalities, sub_event_type) %>% 
+  filter(fatalities >= 1)
+
+ggplot(day, aes(x = event_date, y = fatalities)) + 
+  geom_col()
+
+```
+
 
 # About 
 
